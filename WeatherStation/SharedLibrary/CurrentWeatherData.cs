@@ -39,8 +39,9 @@ namespace SharedLibrary
         private double precipitation;
         private double uvIndex;
         private double humidity;
+        private DateTime lastModified;
 
-        public CurrentWeatherData(string location, DateTime timestamp, double temperature, double pressure, double windSpeed, WindDirection windDirection, double precipitation, double uVIndex, double humidity)
+        public CurrentWeatherData(string location, DateTime timestamp, double temperature, double pressure, double windSpeed, WindDirection windDirection, double precipitation, double uvIndex, double humidity)
         {
             this.location = location;
             this.timestamp = timestamp;
@@ -49,8 +50,10 @@ namespace SharedLibrary
             this.windSpeed = windSpeed;
             this.windDirection = windDirection;
             this.precipitation = precipitation;
-            UVIndex = uVIndex;
+            this.uvIndex = uvIndex;
             this.humidity = humidity;
+            this.lastModified = DateTime.Now;
+
         }
 
         public void Update(CurrentWeatherData updated)
@@ -64,7 +67,22 @@ namespace SharedLibrary
             this.precipitation = updated.Precipitation;
             this.uvIndex = updated.UVIndex;
             this.humidity = updated.Humidity;
+            this.lastModified = DateTime.Now;
         }
+
+        public override string ToString()
+        {
+            return $"Location: {this.location}\n" +
+                   $"Timestamp: {this.timestamp:dd/MM/yyyy HH:mm:ss}\n" +
+                   $"Temperature: {this.temperature}°C\n" +
+                   $"Pressure: {this.pressure} hPa\n" +
+                   $"Wind Speed: {this.windSpeed} km/h\n" +
+                   $"Wind Direction: {this.windDirection}\n" +
+                   $"Precipitation: {this.precipitation} mm\n" +
+                   $"UV Index: {this.uvIndex}\n" +
+                   $"Humidity: {this.humidity}%";
+        }
+
     }
 
     [DataContract]
