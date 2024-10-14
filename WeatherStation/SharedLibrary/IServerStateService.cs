@@ -7,10 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 using SharedLibrary;
 
-namespace WeatherStationServer
+namespace SharedLibrary
 {
     [ServiceContract]
-    public interface IServerState
+    public interface IServerStateService
     {
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]

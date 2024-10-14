@@ -14,6 +14,9 @@ namespace WeatherStationServer
             ServiceHost svc = new ServiceHost(typeof(WeatherStationService));
             svc.Open();
 
+            ServiceHost svcState = new ServiceHost(typeof(ServerStateService));
+            svcState.Open();
+
             Console.WriteLine("Press[Enter] to stop the server.");
             Console.ReadLine();
         }
