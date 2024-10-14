@@ -101,6 +101,14 @@ namespace SharedLibrary
         [FaultContract(typeof(WeatherDataServiceException))]
         List<int> GetExtremeUVIndexHours(DateTime day, string location);    //u kojim sve satima je bilo extreme
 
+        [OperationContract]
+        [FaultContract(typeof(WeatherDataServiceException))]
+        List<CurrentWeatherData> GetSince(DateTime replicationTime);
+
+
+        [OperationContract]
+        [FaultContract(typeof(WeatherDataServiceException))]
+        void EnterData(List<CurrentWeatherData> newData);
 
 
     }

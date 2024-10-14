@@ -31,7 +31,7 @@ namespace WeatherStationServer
 
         public void Add(CurrentWeatherData data)
         {
-            CurrentWeatherData existingData = storedData.FirstOrDefault(d => d.Location.ToLower().Equals(data.Location.ToLower())
+            CurrentWeatherData existingData = storedData.Find(d => d.Location.ToLower().Equals(data.Location.ToLower())
                                                                           && d.Timestamp.Date == data.Timestamp.Date   
                                                                           && d.Timestamp.Hour == data.Timestamp.Hour);
             if(existingData != null)
@@ -49,7 +49,7 @@ namespace WeatherStationServer
 
         public void Update(CurrentWeatherData data)
         {
-            CurrentWeatherData existingData = storedData.FirstOrDefault(d => d.Location.ToLower().Equals(data.Location.ToLower())
+            CurrentWeatherData existingData = storedData.Find(d => d.Location.ToLower().Equals(data.Location.ToLower())
                                                                      && d.Timestamp.Date == data.Timestamp.Date 
                                                                      && d.Timestamp.Hour == data.Timestamp.Hour);
             if (existingData == null)
@@ -68,7 +68,7 @@ namespace WeatherStationServer
 
         public CurrentWeatherData Get(DateTime timestamp, string location)
         {
-            CurrentWeatherData existingData = storedData.FirstOrDefault(d => d.Location.ToLower().Equals(location.ToLower())
+            CurrentWeatherData existingData = storedData.Find(d => d.Location.ToLower().Equals(location.ToLower())
                                                                   && d.Timestamp.Date == timestamp.Date 
                                                                   && d.Timestamp.Hour == timestamp.Hour);
             if (existingData == null)
@@ -86,8 +86,8 @@ namespace WeatherStationServer
 
         public double GetAverageHumidity(DateTime day, string location)
         {
-            var filteredData = storedData.Where(d => d.Location.ToLower().Equals(location.ToLower()) 
-                                                  && d.Timestamp.Date == day.Date).ToList();
+            var filteredData = storedData.FindAll(d => d.Location.ToLower().Equals(location.ToLower()) 
+                                                  && d.Timestamp.Date == day.Date);
 
             if (filteredData.Count == 0)
             {
@@ -104,8 +104,8 @@ namespace WeatherStationServer
 
         public double GetAverageTemperature(DateTime day, string location)
         {
-            var filteredData = storedData.Where(d => d.Location.ToLower().Equals(location.ToLower()) 
-                                                  && d.Timestamp.Date == day.Date).ToList();
+            var filteredData = storedData.FindAll(d => d.Location.ToLower().Equals(location.ToLower()) 
+                                                  && d.Timestamp.Date == day.Date);
 
             if (filteredData.Count == 0)
             {
@@ -121,9 +121,9 @@ namespace WeatherStationServer
 
         public int GetClearDaysNumber(DateTime month, string location)
         {
-            var filteredData = storedData.Where(d => d.Location.ToLower().Equals(location.ToLower()) 
+            var filteredData = storedData.FindAll(d => d.Location.ToLower().Equals(location.ToLower()) 
                                              && d.Timestamp.Year == month.Year 
-                                             && d.Timestamp.Month == month.Month).ToList();
+                                             && d.Timestamp.Month == month.Month);
             if(filteredData.Count == 0)
             {
                 WeatherDataServiceException ex = new WeatherDataServiceException()
@@ -137,8 +137,8 @@ namespace WeatherStationServer
 
         public List<int> GetExtremeUVIndexHours(DateTime day, string location)
         {
-            var filteredData = storedData.Where(d => d.Location.ToLower().Equals(location.ToLower())
-                                             && d.Timestamp.Date == day.Date).ToList();
+            var filteredData = storedData.FindAll(d => d.Location.ToLower().Equals(location.ToLower())
+                                             && d.Timestamp.Date == day.Date);
             if (filteredData.Count == 0)
             {
                 WeatherDataServiceException ex = new WeatherDataServiceException()
@@ -157,7 +157,7 @@ namespace WeatherStationServer
 
         public double GetHumidity(DateTime timestamp, string location)
         {
-            CurrentWeatherData existingData = storedData.FirstOrDefault(d => d.Location.ToLower().Equals(location.ToLower())
+            CurrentWeatherData existingData = storedData.Find(d => d.Location.ToLower().Equals(location.ToLower())
                                                                   && d.Timestamp.Date == timestamp.Date
                                                                   && d.Timestamp.Hour == timestamp.Hour);
             if (existingData == null)
@@ -174,9 +174,9 @@ namespace WeatherStationServer
 
         public List<CurrentWeatherData> GetInRange(DateTime from, DateTime to, string location)
         {
-            var filteredData = storedData.Where(d => d.Location.ToLower() == location.ToLower() 
+            var filteredData = storedData.FindAll(d => d.Location.ToLower() == location.ToLower() 
                                              && d.Timestamp >= from 
-                                             && d.Timestamp <= to).ToList();
+                                             && d.Timestamp <= to);
             if(filteredData.Count == 0)
             {
                 WeatherDataServiceException ex = new WeatherDataServiceException()
@@ -195,8 +195,8 @@ namespace WeatherStationServer
 
         public (double, double) GetMinMaxPrecitipation(DateTime day, string location)
         {
-            var filteredData = storedData.Where(d => d.Location.ToLower() == location.ToLower()
-                                                     && d.Timestamp.Date == day.Date).ToList();
+            var filteredData = storedData.FindAll(d => d.Location.ToLower() == location.ToLower()
+                                                     && d.Timestamp.Date == day.Date);
 
             if (filteredData.Count == 0)
             {
@@ -215,8 +215,8 @@ namespace WeatherStationServer
 
         public (double, double) GetMinMaxTemperature(DateTime day, string location)
         {
-            var filteredData = storedData.Where(d => d.Location.ToLower() == location.ToLower()
-                                                     && d.Timestamp.Date == day.Date).ToList();
+            var filteredData = storedData.FindAll(d => d.Location.ToLower() == location.ToLower()
+                                                     && d.Timestamp.Date == day.Date);
 
             if (filteredData.Count == 0)
             {
@@ -235,7 +235,7 @@ namespace WeatherStationServer
 
         public double GetPrecipitation(DateTime timestamp, string location)
         {
-            CurrentWeatherData existingData = storedData.FirstOrDefault(d => d.Location.ToLower().Equals(location.ToLower())
+            CurrentWeatherData existingData = storedData.Find(d => d.Location.ToLower().Equals(location.ToLower())
                                                                   && d.Timestamp.Date == timestamp.Date
                                                                   && d.Timestamp.Hour == timestamp.Hour);
             if (existingData == null)
@@ -252,7 +252,7 @@ namespace WeatherStationServer
 
         public double GetPressure(DateTime timestamp, string location)
         {
-            CurrentWeatherData existingData = storedData.FirstOrDefault(d => d.Location.ToLower().Equals(location.ToLower())
+            CurrentWeatherData existingData = storedData.Find(d => d.Location.ToLower().Equals(location.ToLower())
                                                                    && d.Timestamp.Date == timestamp.Date
                                                                    && d.Timestamp.Hour == timestamp.Hour);
             if (existingData == null)
@@ -269,9 +269,9 @@ namespace WeatherStationServer
 
         public int GetRainyDaysNumber(DateTime month, string location)
         {
-            var filteredData = storedData.Where(d => d.Location.ToLower().Equals(location.ToLower()) 
+            var filteredData = storedData.FindAll(d => d.Location.ToLower().Equals(location.ToLower()) 
                                                   && d.Timestamp.Year == month.Year 
-                                                  && d.Timestamp.Month == month.Month).ToList();
+                                                  && d.Timestamp.Month == month.Month);
             if (filteredData.Count == 0)
             {
                 WeatherDataServiceException ex = new WeatherDataServiceException()
@@ -285,7 +285,7 @@ namespace WeatherStationServer
 
         public double GetTemperature(DateTime timestamp, string location)
         {
-            CurrentWeatherData existingData = storedData.FirstOrDefault(d => d.Location.ToLower().Equals(location.ToLower())
+            CurrentWeatherData existingData = storedData.Find(d => d.Location.ToLower().Equals(location.ToLower())
                                                                   && d.Timestamp.Date == timestamp.Date
                                                                   && d.Timestamp.Hour == timestamp.Hour);
             if (existingData == null)
@@ -302,7 +302,7 @@ namespace WeatherStationServer
 
         public double GetUVIndex(DateTime timestamp, string location)
         {
-            CurrentWeatherData existingData = storedData.FirstOrDefault(d => d.Location.ToLower().Equals(location.ToLower())
+            CurrentWeatherData existingData = storedData.Find(d => d.Location.ToLower().Equals(location.ToLower())
                                                                   && d.Timestamp.Date == timestamp.Date
                                                                   && d.Timestamp.Hour == timestamp.Hour);
             if (existingData == null)
@@ -319,7 +319,7 @@ namespace WeatherStationServer
 
         public WindDirection GetWindDirection(DateTime timestamp, string location)
         {
-            CurrentWeatherData existingData = storedData.FirstOrDefault(d => d.Location.ToLower().Equals(location.ToLower())
+            CurrentWeatherData existingData = storedData.Find(d => d.Location.ToLower().Equals(location.ToLower())
                                                                   && d.Timestamp.Date == timestamp.Date
                                                                   && d.Timestamp.Hour == timestamp.Hour);
             if (existingData == null)
@@ -336,7 +336,7 @@ namespace WeatherStationServer
 
         public double GetWindSpeed(DateTime timestamp, string location)
         {
-            CurrentWeatherData existingData = storedData.FirstOrDefault(d => d.Location.ToLower().Equals(location.ToLower())
+            CurrentWeatherData existingData = storedData.Find(d => d.Location.ToLower().Equals(location.ToLower())
                                                                   && d.Timestamp.Date == timestamp.Date
                                                                   && d.Timestamp.Hour == timestamp.Hour);
             if (existingData == null)
@@ -349,6 +349,37 @@ namespace WeatherStationServer
 
             }
             return existingData.WindSpeed;
+        }
+
+        public List<CurrentWeatherData> GetSince(DateTime replicationTime)
+        {
+
+            Console.WriteLine(DateTime.Now.ToString() + " -GetSince CALL.");
+            List<CurrentWeatherData> filteredData = storedData.FindAll(d => d.LastModified > replicationTime);
+            foreach(CurrentWeatherData data in filteredData)
+            {
+                Console.WriteLine(data);
+            }
+            return filteredData;
+        }
+
+        public void EnterData(List<CurrentWeatherData> newData)
+        {
+            Console.WriteLine("-EnterData INITIATED.");
+            foreach(CurrentWeatherData data in newData)
+            {
+                CurrentWeatherData existingData = storedData.Find(d => d.Location.ToLower().Equals(data.Location.ToLower())
+                                                                    && d.Timestamp.Date == data.Timestamp.Date);
+                if(existingData != null)
+                {
+                    existingData.Update(data);
+                }
+                else
+                {
+                    storedData.Add(data);
+                }
+
+            }
         }
     }
 }

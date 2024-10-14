@@ -15,6 +15,8 @@ namespace WeatherStationServer
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]
         EServerState GetState();
+
+
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]
         void UpdateState(EServerState state);

@@ -28,6 +28,8 @@ namespace SharedLibrary
         public double UVIndex { get => uvIndex; set => uvIndex = value; }
         [DataMember]
         public double Humidity { get => humidity; set => humidity = value; }
+        [DataMember]
+        public DateTime LastModified { get => lastModified; set => lastModified = value; }
 
 
         private string location;
@@ -67,7 +69,7 @@ namespace SharedLibrary
             this.precipitation = updated.Precipitation;
             this.uvIndex = updated.UVIndex;
             this.humidity = updated.Humidity;
-            this.lastModified = DateTime.Now;
+            this.lastModified = updated.lastModified;
         }
 
         public override string ToString()
