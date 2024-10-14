@@ -80,6 +80,7 @@ namespace WeatherStationServer
                 throw new FaultException<WeatherDataServiceException>(ex);
 
             }
+
             return existingData;
         }
 
@@ -184,6 +185,11 @@ namespace WeatherStationServer
                 };
                 throw new FaultException<WeatherDataServiceException>(ex);
             }
+
+            Console.WriteLine("FILTERED DATA IN RANGE: \n");
+            foreach (CurrentWeatherData data in filteredData)
+                Console.WriteLine(data);
+
             return filteredData;
         }
 
@@ -263,7 +269,9 @@ namespace WeatherStationServer
 
         public int GetRainyDaysNumber(DateTime month, string location)
         {
-            var filteredData = storedData.Where(d => d.Location.ToLower().Equals(location.ToLower()) && d.Timestamp.Year == month.Year && d.Timestamp.Month == month.Month).ToList();
+            var filteredData = storedData.Where(d => d.Location.ToLower().Equals(location.ToLower()) 
+                                                  && d.Timestamp.Year == month.Year 
+                                                  && d.Timestamp.Month == month.Month).ToList();
             if (filteredData.Count == 0)
             {
                 WeatherDataServiceException ex = new WeatherDataServiceException()

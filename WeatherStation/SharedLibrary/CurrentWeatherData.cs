@@ -80,7 +80,7 @@ namespace SharedLibrary
                    $"Wind Direction: {this.windDirection}\n" +
                    $"Precipitation: {this.precipitation} mm\n" +
                    $"UV Index: {this.uvIndex}\n" +
-                   $"Humidity: {this.humidity}%";
+                   $"Humidity: {this.humidity}%\n";
         }
 
     }
