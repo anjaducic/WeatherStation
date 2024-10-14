@@ -44,7 +44,7 @@ namespace WeatherStationServer
             }
 
             storedData.Add(data);
-            Console.WriteLine("1 NEW DATA ADDED: " + data);
+            Console.WriteLine("1 NEW DATA ADDED: \n" + data);
         }
 
         public void Update(CurrentWeatherData data)
@@ -63,7 +63,7 @@ namespace WeatherStationServer
             }
 
             existingData.Update(data);
-            Console.WriteLine("1 DATA MODIFIED: " + data);
+            Console.WriteLine("1 DATA MODIFIED:\n " + data);
         }
 
         public CurrentWeatherData Get(DateTime timestamp, string location)
@@ -356,10 +356,11 @@ namespace WeatherStationServer
 
             Console.WriteLine(DateTime.Now.ToString() + " -GetSince CALL.");
             List<CurrentWeatherData> filteredData = storedData.FindAll(d => d.LastModified > replicationTime);
-            foreach(CurrentWeatherData data in filteredData)
+          /*  foreach(CurrentWeatherData data in filteredData)
             {
                 Console.WriteLine(data);
             }
+          */
             return filteredData;
         }
 
