@@ -49,7 +49,17 @@ namespace Monitor
                 {
                     ChannelFactory<IServerStateService> cfPrimary = new ChannelFactory<IServerStateService>("Primary");
                     primary = cfPrimary.CreateChannel();
-                    primary.UpdateState(EServerState.Primary);
+
+                    if (secondaryState != EServerState.Primary)
+                    {
+                        primary.UpdateState(EServerState.Primary);
+
+                    }
+                    else
+                    {
+                        primary.UpdateState(EServerState.Secondary);    //ako se vrati
+                        primaryState = EServerState.Secondary;
+                    }
                 }
                 catch (CommunicationException cex)
                 {
@@ -61,7 +71,18 @@ namespace Monitor
                 {
                     ChannelFactory<IServerStateService> cfSecondary = new ChannelFactory<IServerStateService>("Secondary");
                     secondary = cfSecondary.CreateChannel();
-                    secondary.UpdateState(EServerState.Secondary);
+
+                    if (secondaryState == EServerState.Primary)
+                    {
+                        secondary.UpdateState(EServerState.Primary);
+                    }
+                        
+                    else
+                    {
+                        secondary.UpdateState(EServerState.Secondary);
+                        secondaryState = EServerState.Secondary;
+                    }
+                        
                 }
                 catch (CommunicationException cex)
                 {
@@ -69,8 +90,7 @@ namespace Monitor
 
                 }
 
-                primaryState = EServerState.Unknown;
-                secondaryState = EServerState.Unknown;
+                
 
                 try
                 {
@@ -79,6 +99,7 @@ namespace Monitor
                 catch (Exception ex)
                 {
                     Console.WriteLine("SERVICE-A ERROR: " + ex.Message);
+                    primaryState = EServerState.Unknown;
                 }
                 try
                 {
@@ -87,6 +108,7 @@ namespace Monitor
                 catch (Exception ex)
                 {
                     Console.WriteLine("SERVICE-B ERROR: " + ex.Message);
+                    secondaryState = EServerState.Unknown;
                 }
 
 
@@ -99,6 +121,11 @@ namespace Monitor
                         secondary.UpdateState(EServerState.Primary);
                         secondaryState = EServerState.Primary;
                         Console.WriteLine("SERVICE-B STATUS BECAME: PRIMARY");
+                    }
+                    else if (secondaryState == EServerState.Unknown)
+                    {
+                        Console.WriteLine("BOTH SERVICES UNAVAILABLE. WAITING...");
+                        continue;
                     }
                 }
 
