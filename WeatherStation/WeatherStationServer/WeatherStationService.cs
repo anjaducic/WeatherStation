@@ -356,11 +356,11 @@ namespace WeatherStationServer
 
             Console.WriteLine(DateTime.Now.ToString() + " -GetSince CALL.");
             List<CurrentWeatherData> filteredData = storedData.FindAll(d => d.LastModified > replicationTime);
-          /*  foreach(CurrentWeatherData data in filteredData)
+            foreach(CurrentWeatherData data in filteredData)
             {
                 Console.WriteLine(data);
             }
-          */
+          
             return filteredData;
         }
 
