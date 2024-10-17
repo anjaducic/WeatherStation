@@ -22,13 +22,11 @@ namespace SharedLibrary
 
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]
-
         CurrentWeatherData Get(DateTime timestamp, string location);
 
 
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]
-
         List<CurrentWeatherData> GetInRange(DateTime from, DateTime to, string location);
 
 

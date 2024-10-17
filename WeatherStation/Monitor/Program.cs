@@ -13,14 +13,15 @@ namespace Monitor
     {
         static IServerStateService primary = null;
         static IServerStateService secondary = null;
+        static EServerState primaryState = EServerState.Unknown;
+        static EServerState secondaryState = EServerState.Unknown;
+        static bool primaryWorking = false;
+        static bool secondaryWorking = false;
+
 
         static void Main(string[] args)
         {
-            EServerState primaryState = EServerState.Unknown;
-            EServerState secondaryState = EServerState.Unknown;
-            bool primaryWorking = false;
-            bool secondaryWorking = false;
-
+            
 
             while (true)
             {
@@ -98,8 +99,6 @@ namespace Monitor
                     secondaryWorking = false;
                 }
 
-
-//****************************************************
 
                 if (primaryState == EServerState.Unknown)
                 {
