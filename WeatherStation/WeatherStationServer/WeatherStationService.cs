@@ -370,7 +370,8 @@ namespace WeatherStationServer
             foreach(CurrentWeatherData data in newData)
             {
                 CurrentWeatherData existingData = storedData.Find(d => d.Location.ToLower().Equals(data.Location.ToLower())
-                                                                    && d.Timestamp.Date == data.Timestamp.Date);
+                                                                    && d.Timestamp.Date == data.Timestamp.Date
+                                                                    && d.Timestamp.Hour == data.Timestamp.Hour);
                 if(existingData != null)
                 {
                     existingData.Update(data);

@@ -18,7 +18,7 @@ namespace WeatherStationServer
         {
             this.serverState = (EServerState)Enum.Parse(typeof(EServerState), Properties.Settings.Default.ServerState);
 
-            Console.WriteLine("Server state is: " + this.serverState.ToString());
+            Console.WriteLine("Server: " + this.serverState.ToString());
         }
     }
 }

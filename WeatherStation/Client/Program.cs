@@ -26,72 +26,8 @@ namespace Client
             while (true) 
             {
                 ShowMenu();
-                string choice = Console.ReadLine();
-                switch (choice.ToUpper())
-                {
-                    case "A":
-                        AddNewData();
-                        break;
-                    case "B":
-                        UpdateData();
-                        break;
-                    case "C":
-                        GetOneData();
-                        break;
-                    case "D":
-                        GetDataInRange();
-                        break;
-                    case "E":
-                        GetCurrentTemperature();
-                        break;
-                    case "F":
-                        GetCurrentPressure();
-                        break;
-                    case "G":
-                        GetWindSpeed();
-                        break;
-                    case "H":
-                        GetWindDirection();
-                        break;
-                    case "I":
-                        GetPrecipitation();
-                        break;
-                    case "J":
-                        GetHumidity();
-                        break;
-                    case "K":
-                        GetUVIndex();
-                        break;
-                    case "L":
-                        GetAverageTemperature();
-                        break;
-                    case "M":
-                        GetMinMaxTemperature();
-                        break;
-                    case "N":
-                        GetClearDaysNumber();
-                        break;
-                    case "O":
-                        GetRainyDaysNumber();
-                        break;
-                    case "P":
-                        GetMinMaxPrecipitation();
-                        break;
-                    case "Q":
-                        GetAverageHumidity();
-                        break;
-                    case "R":
-                        GetExtremeUVIndexHours();
-                        break;
-                    case "0":
-                        Console.WriteLine("Exiting...");
-                        return;
-                    default:
-                        Console.WriteLine("Invalid option. Please try again.");
-                        break;
-                }               
+                DoChosenAction();
             }
-      
         }
 
         private static void ShowMenu()
@@ -119,6 +55,74 @@ namespace Client
                               "\n Enter option: ");
         }
 
+        private static void DoChosenAction()
+        {
+            string choice = Console.ReadLine();
+            switch (choice.ToUpper())
+            {
+                case "A":
+                    AddNewData();
+                    break;
+                case "B":
+                    UpdateData();
+                    break;
+                case "C":
+                    GetOneData();
+                    break;
+                case "D":
+                    GetDataInRange();
+                    break;
+                case "E":
+                    GetCurrentTemperature();
+                    break;
+                case "F":
+                    GetCurrentPressure();
+                    break;
+                case "G":
+                    GetWindSpeed();
+                    break;
+                case "H":
+                    GetWindDirection();
+                    break;
+                case "I":
+                    GetPrecipitation();
+                    break;
+                case "J":
+                    GetHumidity();
+                    break;
+                case "K":
+                    GetUVIndex();
+                    break;
+                case "L":
+                    GetAverageTemperature();
+                    break;
+                case "M":
+                    GetMinMaxTemperature();
+                    break;
+                case "N":
+                    GetClearDaysNumber();
+                    break;
+                case "O":
+                    GetRainyDaysNumber();
+                    break;
+                case "P":
+                    GetMinMaxPrecipitation();
+                    break;
+                case "Q":
+                    GetAverageHumidity();
+                    break;
+                case "R":
+                    GetExtremeUVIndexHours();
+                    break;
+                case "0":
+                    Console.WriteLine("Exiting...");
+                    Environment.Exit(0);
+                    return;
+                default:
+                    Console.WriteLine("Invalid option. Please try again.");
+                    break;
+            }
+        }
         private static void ConnectToService()
         {
             try
@@ -961,7 +965,5 @@ namespace Client
                 Console.WriteLine("An unexpected error occurred: " + ex.Message);
             }
         }
-
-
     }
 }
