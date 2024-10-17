@@ -22,82 +22,82 @@ namespace SharedLibrary
 
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]
-        CurrentWeatherData Get(DateTime timestamp, string location);
+        CurrentWeatherData Get(DateTime timestamp, string location);            //
 
 
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]
-        List<CurrentWeatherData> GetInRange(DateTime from, DateTime to, string location);
+        List<CurrentWeatherData> GetInRange(DateTime from, DateTime to, string location);   //3
 
 
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]
-        double GetTemperature(DateTime timestamp, string location);
+        double GetTemperature(DateTime timestamp, string location);                 //
 
 
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]
-        double GetPressure(DateTime timestamp, string location);
+        double GetPressure(DateTime timestamp, string location);                //
 
 
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]
-        double GetWindSpeed(DateTime timestamp, string location);
+        double GetWindSpeed(DateTime timestamp, string location);               //
 
 
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]
-        WindDirection GetWindDirection(DateTime timestamp, string location);
+        WindDirection GetWindDirection(DateTime timestamp, string location);        //
 
 
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]
-        double GetPrecipitation(DateTime timestamp, string location);
+        double GetPrecipitation(DateTime timestamp, string location);       //
 
 
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]
-        double GetHumidity(DateTime timestamp, string location);
+        double GetHumidity(DateTime timestamp, string location);        //
 
 
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]
-        double GetUVIndex(DateTime timestamp, string location);
+        double GetUVIndex(DateTime timestamp, string location);     //
 
 
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]
-        double GetAverageTemperature(DateTime day, string location);
+        double GetAverageTemperature(DateTime day, string location);    //11
 
 
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]    
-        (double, double) GetMinMaxTemperature(DateTime day, string location);
+        (double, double) GetMinMaxTemperature(DateTime day, string location);   //11
 
 
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]
-        int GetClearDaysNumber(DateTime month, string location);
+        int GetClearDaysNumber(DateTime month, string location);        //22
 
 
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]
-        int GetRainyDaysNumber(DateTime month, string location);
+        int GetRainyDaysNumber(DateTime month, string location);    //22
 
 
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]
-        (double, double) GetMinMaxPrecitipation(DateTime day, string location);
+        (double, double) GetMinMaxPrecitipation(DateTime day, string location);     //11
 
 
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]
-        double GetAverageHumidity(DateTime day, string location);
+        double GetAverageHumidity(DateTime day, string location);       //11
 
 
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]
-        List<int> GetExtremeUVIndexHours(DateTime day, string location);    //u kojim sve satima je bilo extreme
+        List<int> GetExtremeUVIndexHours(DateTime day, string location);    //11
 
         [OperationContract]
         [FaultContract(typeof(WeatherDataServiceException))]

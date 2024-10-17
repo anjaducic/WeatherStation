@@ -5,8 +5,287 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DesktopClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="700" Width="1000"
+        Background="#F4F7FA" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="DarkBlue" Color="#E0C28C"/>
+        <SolidColorBrush x:Key="LightGray" Color="#D0D3D8"/>
+        <SolidColorBrush x:Key="LightGold" Color="#D7B37D"/>
+        <SolidColorBrush x:Key="WhiteSmoke" Color="#F4F7FA"/>
+        <SolidColorBrush x:Key="HoverColor" Color="#A1BCC3"/>
+    </Window.Resources>
+
     <Grid>
-        
+        <DockPanel>
+            <Menu DockPanel.Dock="Top" Height="60" HorizontalAlignment="Stretch" Background="{StaticResource DarkBlue}">
+                <Menu.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </Menu.ItemsPanel>
+
+                <MenuItem Header="New" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="18" Margin="0.1,0" Background="{StaticResource LightGold}">
+                    <MenuItem.Style>
+                        <Style TargetType="MenuItem">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </MenuItem.Style>
+                </MenuItem>
+
+                <MenuItem Header="Update" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="18" Margin="0.1,0" Background="{StaticResource LightGold}">
+                    <MenuItem.Style>
+                        <Style TargetType="MenuItem">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </MenuItem.Style>
+                </MenuItem>
+
+                <!-- SEARCH with Submenu -->
+                <MenuItem Header="Search" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="18" Margin="0.1,0" Background="{StaticResource LightGold}">
+                    <MenuItem.Style>
+                        <Style TargetType="MenuItem">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </MenuItem.Style>
+
+                    <!-- Dropdown for SEARCH -->
+                    <MenuItem Header="Weather" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                        <MenuItem.Style>
+                            <Style TargetType="MenuItem">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </MenuItem.Style>
+                    </MenuItem>
+
+                    <MenuItem Header="Temperature" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                        <MenuItem.Style>
+                            <Style TargetType="MenuItem">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </MenuItem.Style>
+                    </MenuItem>
+
+                    <MenuItem Header="Pressure" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                        <MenuItem.Style>
+                            <Style TargetType="MenuItem">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </MenuItem.Style>
+                    </MenuItem>
+
+                    <MenuItem Header="Wind speed" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                        <MenuItem.Style>
+                            <Style TargetType="MenuItem">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </MenuItem.Style>
+                    </MenuItem>
+
+                    <MenuItem Header="Wind direction" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                        <MenuItem.Style>
+                            <Style TargetType="MenuItem">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </MenuItem.Style>
+                    </MenuItem>
+
+                    <MenuItem Header="Precipitation" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                        <MenuItem.Style>
+                            <Style TargetType="MenuItem">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </MenuItem.Style>
+                    </MenuItem>
+
+                    <MenuItem Header="Humidity" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                        <MenuItem.Style>
+                            <Style TargetType="MenuItem">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </MenuItem.Style>
+                    </MenuItem>
+
+                    <MenuItem Header="UV index" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                        <MenuItem.Style>
+                            <Style TargetType="MenuItem">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </MenuItem.Style>
+                    </MenuItem>
+
+
+                </MenuItem>
+
+                <MenuItem Header="Search in range" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="18" Margin="0.1,0" Background="{StaticResource LightGold}">
+                    <MenuItem.Style>
+                        <Style TargetType="MenuItem">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </MenuItem.Style>
+                </MenuItem>
+
+                <MenuItem Header="Daily analysis" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="18" Margin="0.1,0" Background="{StaticResource LightGold}">
+                    <MenuItem.Style>
+                        <Style TargetType="MenuItem">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </MenuItem.Style>
+
+                    <MenuItem Header="Average temperature" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                        <MenuItem.Style>
+                            <Style TargetType="MenuItem">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </MenuItem.Style>
+                    </MenuItem>
+
+                    <MenuItem Header="Min and max temperature" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                        <MenuItem.Style>
+                            <Style TargetType="MenuItem">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </MenuItem.Style>
+                    </MenuItem>
+
+                    <MenuItem Header="Min and max precipitation" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                        <MenuItem.Style>
+                            <Style TargetType="MenuItem">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </MenuItem.Style>
+                    </MenuItem>
+
+                    <MenuItem Header="Average humidity" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                        <MenuItem.Style>
+                            <Style TargetType="MenuItem">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </MenuItem.Style>
+                    </MenuItem>
+
+                    <MenuItem Header="Extreme UV - hours" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                        <MenuItem.Style>
+                            <Style TargetType="MenuItem">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </MenuItem.Style>
+                    </MenuItem>
+                </MenuItem>
+
+                <MenuItem Header="Monthly analysis" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="18" Margin="0.1,0" Background="{StaticResource LightGold}">
+                    <MenuItem.Style>
+                        <Style TargetType="MenuItem">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </MenuItem.Style>
+
+                    <MenuItem Header="Number of clear days" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                        <MenuItem.Style>
+                            <Style TargetType="MenuItem">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </MenuItem.Style>
+                    </MenuItem>
+
+                    <MenuItem Header="Number of rainy days" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                        <MenuItem.Style>
+                            <Style TargetType="MenuItem">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </MenuItem.Style>
+                    </MenuItem>
+
+                </MenuItem>
+            </Menu>
+
+            <!-- Frame for content -->
+            <Frame x:Name="Main" Grid.Column="1" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{StaticResource WhiteSmoke}">
+            </Frame>
+        </DockPanel>
     </Grid>
 </Window>

@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +56,61 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\AddForm.xaml.cs">
+      <DependentUpon>AddForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AverageHumidityView.xaml.cs">
+      <DependentUpon>AverageHumidityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AverageTemperatureView.xaml.cs">
+      <DependentUpon>AverageTemperatureView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ClearDaysView.xaml.cs">
+      <DependentUpon>ClearDaysView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ExtremeUVIndexView.xaml.cs">
+      <DependentUpon>ExtremeUVIndexView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\HumidityView.xaml.cs">
+      <DependentUpon>HumidityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MinMaxPrecipitationView.xaml.cs">
+      <DependentUpon>MinMaxPrecipitationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MinMaxTemperatureView.xaml.cs">
+      <DependentUpon>MinMaxTemperatureView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PrecipitationView.xaml.cs">
+      <DependentUpon>PrecipitationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PressureView.xaml.cs">
+      <DependentUpon>PressureView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RainyDaysView.xaml.cs">
+      <DependentUpon>RainyDaysView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SearchInRangeView.xaml.cs">
+      <DependentUpon>SearchInRangeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TemperatureView.xaml.cs">
+      <DependentUpon>TemperatureView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UpdateForm.xaml.cs">
+      <DependentUpon>UpdateForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UVIndexView.xaml.cs">
+      <DependentUpon>UVIndexView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WeatherView.xaml.cs">
+      <DependentUpon>WeatherView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WindDirectionView.xaml.cs">
+      <DependentUpon>WindDirectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WindSpeedView.xaml.cs">
+      <DependentUpon>WindSpeedView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceManager.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,6 +123,78 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AddForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AverageHumidityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AverageTemperatureView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ClearDaysView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ExtremeUVIndexView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\HumidityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MinMaxPrecipitationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MinMaxTemperatureView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PrecipitationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PressureView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RainyDaysView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SearchInRangeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TemperatureView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UpdateForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UVIndexView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WeatherView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WindDirectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WindSpeedView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -93,6 +221,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharedLibrary\SharedLibrary.csproj">
+      <Project>{b265a610-b009-43b3-82c1-814e4da77634}</Project>
+      <Name>SharedLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
