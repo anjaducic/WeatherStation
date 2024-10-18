@@ -25,19 +25,7 @@
                     </ItemsPanelTemplate>
                 </Menu.ItemsPanel>
 
-                <MenuItem Header="New" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="18" Margin="0.1,0" Background="{StaticResource LightGold}">
-                    <MenuItem.Style>
-                        <Style TargetType="MenuItem">
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="{StaticResource HoverColor}"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </MenuItem.Style>
-                </MenuItem>
-
-                <MenuItem Header="Update" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="18" Margin="0.1,0" Background="{StaticResource LightGold}">
+                <MenuItem Header="New" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="18" Margin="0.1,0" Background="{StaticResource LightGold}" Click="New_Click">
                     <MenuItem.Style>
                         <Style TargetType="MenuItem">
                             <Style.Triggers>
@@ -62,7 +50,7 @@
                     </MenuItem.Style>
 
                     <!-- Dropdown for SEARCH -->
-                    <MenuItem Header="Weather" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                    <MenuItem Header="Weather" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40" Click="Weather_Click">
                         <MenuItem.Style>
                             <Style TargetType="MenuItem">
                                 <Style.Triggers>
@@ -74,7 +62,7 @@
                         </MenuItem.Style>
                     </MenuItem>
 
-                    <MenuItem Header="Temperature" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                    <MenuItem Header="Temperature" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40" Click="Temperature_Click">
                         <MenuItem.Style>
                             <Style TargetType="MenuItem">
                                 <Style.Triggers>
@@ -86,7 +74,7 @@
                         </MenuItem.Style>
                     </MenuItem>
 
-                    <MenuItem Header="Pressure" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                    <MenuItem Header="Pressure" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40" Click="Pressure_Click">
                         <MenuItem.Style>
                             <Style TargetType="MenuItem">
                                 <Style.Triggers>
@@ -98,7 +86,7 @@
                         </MenuItem.Style>
                     </MenuItem>
 
-                    <MenuItem Header="Wind speed" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                    <MenuItem Header="Wind speed" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40" Click="WindSpeed_Click">
                         <MenuItem.Style>
                             <Style TargetType="MenuItem">
                                 <Style.Triggers>
@@ -110,7 +98,7 @@
                         </MenuItem.Style>
                     </MenuItem>
 
-                    <MenuItem Header="Wind direction" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                    <MenuItem Header="Wind direction" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40" Click="WindDirection_Click">
                         <MenuItem.Style>
                             <Style TargetType="MenuItem">
                                 <Style.Triggers>
@@ -122,7 +110,7 @@
                         </MenuItem.Style>
                     </MenuItem>
 
-                    <MenuItem Header="Precipitation" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                    <MenuItem Header="Precipitation" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40" Click="Precipitation_Click">
                         <MenuItem.Style>
                             <Style TargetType="MenuItem">
                                 <Style.Triggers>
@@ -134,7 +122,7 @@
                         </MenuItem.Style>
                     </MenuItem>
 
-                    <MenuItem Header="Humidity" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                    <MenuItem Header="Humidity" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40" Click="Humidity_Click">
                         <MenuItem.Style>
                             <Style TargetType="MenuItem">
                                 <Style.Triggers>
@@ -146,7 +134,7 @@
                         </MenuItem.Style>
                     </MenuItem>
 
-                    <MenuItem Header="UV index" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                    <MenuItem Header="UV index" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40" Click="UVIndex_Click">
                         <MenuItem.Style>
                             <Style TargetType="MenuItem">
                                 <Style.Triggers>
@@ -161,7 +149,7 @@
 
                 </MenuItem>
 
-                <MenuItem Header="Search in range" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="18" Margin="0.1,0" Background="{StaticResource LightGold}">
+                <MenuItem Header="Search in range" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="18" Margin="0.1,0" Background="{StaticResource LightGold}" Click="SearchInRange_Click">
                     <MenuItem.Style>
                         <Style TargetType="MenuItem">
                             <Style.Triggers>
@@ -184,7 +172,7 @@
                         </Style>
                     </MenuItem.Style>
 
-                    <MenuItem Header="Average temperature" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                    <MenuItem Header="Average temperature" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40" Click="AverageTemperature_Click">
                         <MenuItem.Style>
                             <Style TargetType="MenuItem">
                                 <Style.Triggers>
@@ -196,7 +184,7 @@
                         </MenuItem.Style>
                     </MenuItem>
 
-                    <MenuItem Header="Min and max temperature" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                    <MenuItem Header="Min and max temperature" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40" Click="MinMaxTemperature_Click">
                         <MenuItem.Style>
                             <Style TargetType="MenuItem">
                                 <Style.Triggers>
@@ -208,7 +196,7 @@
                         </MenuItem.Style>
                     </MenuItem>
 
-                    <MenuItem Header="Min and max precipitation" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                    <MenuItem Header="Min and max precipitation" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40" Click="MinMaxPrecipitation_Click">
                         <MenuItem.Style>
                             <Style TargetType="MenuItem">
                                 <Style.Triggers>
@@ -220,7 +208,7 @@
                         </MenuItem.Style>
                     </MenuItem>
 
-                    <MenuItem Header="Average humidity" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                    <MenuItem Header="Average humidity" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40" Click="AverageHumidity_Click">
                         <MenuItem.Style>
                             <Style TargetType="MenuItem">
                                 <Style.Triggers>
@@ -232,7 +220,7 @@
                         </MenuItem.Style>
                     </MenuItem>
 
-                    <MenuItem Header="Extreme UV - hours" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                    <MenuItem Header="Extreme UV - hours" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40" Click="ExtremeUVIndex_Click">
                         <MenuItem.Style>
                             <Style TargetType="MenuItem">
                                 <Style.Triggers>
@@ -256,7 +244,7 @@
                         </Style>
                     </MenuItem.Style>
 
-                    <MenuItem Header="Number of clear days" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                    <MenuItem Header="Number of clear days" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40" Click="ClearDays_Click">
                         <MenuItem.Style>
                             <Style TargetType="MenuItem">
                                 <Style.Triggers>
@@ -268,7 +256,7 @@
                         </MenuItem.Style>
                     </MenuItem>
 
-                    <MenuItem Header="Number of rainy days" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40">
+                    <MenuItem Header="Number of rainy days" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16" Background="{StaticResource LightGold}" Height="40" Click="RainyDays_Click">
                         <MenuItem.Style>
                             <Style TargetType="MenuItem">
                                 <Style.Triggers>

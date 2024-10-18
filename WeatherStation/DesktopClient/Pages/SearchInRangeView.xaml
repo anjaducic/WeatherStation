@@ -1,14 +1,70 @@
 ﻿<Page x:Class="DesktopClient.Pages.SearchInRangeView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:DesktopClient.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="SearchInRangeView">
+      xmlns:local="clr-namespace:DesktopClient"
+      Title="Search Weather Data">
+
+    <Page.Resources>
+        <SolidColorBrush x:Key="DarkBlue" Color="#E0C28C"/>
+        <SolidColorBrush x:Key="LightGray" Color="#D0D3D8"/>
+        <SolidColorBrush x:Key="LightGold" Color="#D7B37D"/>
+        <SolidColorBrush x:Key="HoverColor" Color="#A1BCC3"/>
+        <SolidColorBrush x:Key="DarkBrown" Color="#6A4F35"/>
+    </Page.Resources>
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Search Weather" FontSize="24" FontWeight="Bold" Foreground="{StaticResource DarkBlue}" Margin="0,20,0,30" HorizontalAlignment="Center"/>
+
+        <!-- Form Fields -->
+        <StackPanel Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center">
+
+            <!-- Location -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10" HorizontalAlignment="Center">
+                <TextBlock Text="Location:" VerticalAlignment="Center" Width="120" Foreground="{StaticResource DarkBlue}" FontWeight="Bold"/>
+                <TextBox Name="SearchLocationTextBox" Width="280" Height="30" Background="{StaticResource LightGray}"/>
+            </StackPanel>
+
+            <!-- Start Date and Time -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10" HorizontalAlignment="Center">
+                <TextBlock Text="Start Date and Time:" VerticalAlignment="Center" Width="120" Foreground="{StaticResource DarkBlue}" FontWeight="Bold"/>
+                <DatePicker Name="SearchStartDatePicker" Width="120" Height="30" Background="{StaticResource LightGray}" />
+                <TextBox Name="SearchStartTimeTextBox" Width="150" Height="30" Background="{StaticResource LightGray}" Margin="10,0,0,0" 
+                         PreviewTextInput="StartTimeTextBox_PreviewTextInput" />
+            </StackPanel>
+
+            <!-- End Date and Time -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10" HorizontalAlignment="Center">
+                <TextBlock Text="End Date and Time:" VerticalAlignment="Center" Width="120" Foreground="{StaticResource DarkBlue}" FontWeight="Bold"/>
+                <DatePicker Name="SearchEndDatePicker" Width="120" Height="30" Background="{StaticResource LightGray}" />
+                <TextBox Name="SearchEndTimeTextBox" Width="150" Height="30" Background="{StaticResource LightGray}" Margin="10,0,0,0" 
+                         PreviewTextInput="EndTimeTextBox_PreviewTextInput" />
+            </StackPanel>
+
+            <Button Name="SearchButton" Content="Search" Width="100" Height="40" Background="{StaticResource LightGold}" Foreground="White" Click="SearchButton_Click"/>
+
+            <!-- Results List -->
+            <ListView Name="ResultsListView" Height="300" Margin="0,20,0,0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Location" DisplayMemberBinding="{Binding Location}" Width="100"/>
+                        <GridViewColumn Header="Timestamp" DisplayMemberBinding="{Binding Timestamp}" Width="150"/>
+                        <GridViewColumn Header="Temperature" DisplayMemberBinding="{Binding Temperature}" Width="100"/>
+                        <GridViewColumn Header="Pressure" DisplayMemberBinding="{Binding Pressure}" Width="100"/>
+                        <GridViewColumn Header="Humidity" DisplayMemberBinding="{Binding Humidity}" Width="100"/>
+                        <GridViewColumn Header="Precipitation" DisplayMemberBinding="{Binding Precipitation}" Width="100"/>
+                        <GridViewColumn Header="UVIndex" DisplayMemberBinding="{Binding UVIndex}" Width="100"/>
+                        <GridViewColumn Header="Wind Speed" DisplayMemberBinding="{Binding WindSpeed}" Width="100"/>
+                        <GridViewColumn Header="Wind Direction" DisplayMemberBinding="{Binding WindDirection}" Width="100"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </StackPanel>
     </Grid>
 </Page>
