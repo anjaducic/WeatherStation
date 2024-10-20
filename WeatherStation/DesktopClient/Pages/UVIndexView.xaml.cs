@@ -37,9 +37,15 @@ namespace DesktopClient.Pages
             DateTime selectedDate = SearchDatePicker.SelectedDate.Value;
             string time = SearchTimeTextBox.Text;
 
-            string dateTimeString = $"{selectedDate.ToShortDateString()} {time}";
-            string result = $"UV index for {location} on {dateTimeString} is 22.";
+            string timestampStr = $"{selectedDate.ToShortDateString()} {time}";
+            DateTime timestamp = DateTime.Parse(timestampStr);
 
+            double? uvIndex = ServiceManager.GetUVIndex(location, timestamp);
+            if (uvIndex == null)
+            {
+                return;
+            }
+            string result = $"UV index for {location} on {selectedDate.ToShortDateString()} at {timestamp.Hour} is {uvIndex}.";
             SearchResultTextBlock.Text = result;
         }
 

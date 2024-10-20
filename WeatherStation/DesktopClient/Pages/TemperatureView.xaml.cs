@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace DesktopClient.Pages
 {
-    /// <summary>
-    /// Interaction logic for TemperatureView.xaml
-    /// </summary>
     public partial class TemperatureView : Page
     {
         public TemperatureView()
@@ -40,9 +37,16 @@ namespace DesktopClient.Pages
             DateTime selectedDate = SearchDatePicker.SelectedDate.Value;
             string time = SearchTimeTextBox.Text;
 
-            string dateTimeString = $"{selectedDate.ToShortDateString()} {time}";
-            string result = $"Temperature for {location} on {dateTimeString} is 25°C."; 
+            string timestampStr = $"{selectedDate.ToShortDateString()} {time}";
+            DateTime timestamp = DateTime.Parse(timestampStr);
 
+            double? temperature = ServiceManager.GetCurrentTemperature(location, timestamp);
+            if(temperature == null)
+            {
+                return;
+            }
+
+            string result = $"Temperature for {location} on {selectedDate.ToShortDateString()} at {timestamp.Hour} is {temperature}°C."; 
             SearchResultTextBlock.Text = result;
         }
 

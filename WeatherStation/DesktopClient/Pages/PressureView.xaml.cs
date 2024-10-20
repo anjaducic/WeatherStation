@@ -40,9 +40,14 @@ namespace DesktopClient.Pages
             DateTime selectedDate = SearchDatePicker.SelectedDate.Value;
             string time = SearchTimeTextBox.Text;
 
-            string dateTimeString = $"{selectedDate.ToShortDateString()} {time}";
-            string result = $"Pressure for {location} on {dateTimeString} is hPa.";
+            string timestampStr = $"{selectedDate.ToShortDateString()} {time}";
+            DateTime timestamp = DateTime.Parse(timestampStr);
 
+            double? pressure = ServiceManager.GetCurrentPressure(location, timestamp);
+            if (pressure == null)
+                return;
+            
+            string result = $"Pressure for {location} on {selectedDate.ToShortDateString()} at {timestamp.Hour}h is {pressure} hPa.";
             SearchResultTextBlock.Text = result;
         }
 

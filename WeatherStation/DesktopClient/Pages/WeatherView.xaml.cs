@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SharedLibrary;
 
 namespace DesktopClient.Pages
 {
@@ -34,18 +35,26 @@ namespace DesktopClient.Pages
                 MessageBox.Show("All fields are required for search.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            string timestampStr = $"{selectedDate.ToShortDateString()} {time}";
+            DateTime timestamp = DateTime.Parse(timestampStr);
 
-            SearchResultTextBlock.Text = $"Weather for {location} on {selectedDate.ToShortDateString()} at {time}";
 
-            LocationTextBlock.Text = $"Location: {location}";
-            TimestampTextBlock.Text = $"Timestamp: {selectedDate.ToShortDateString()} {time}";
-            TemperatureTextBlock.Text = $"Temperature: 25°C";
-            PressureTextBlock.Text = $"Pressure: 1013 hPa";
-            WindSpeedTextBlock.Text = $"Wind Speed: 15 km/h";
-            WindDirectionTextBlock.Text = $"Wind Direction: North";
-            PrecipitationTextBlock.Text = $"Precipitation: 0 mm";
-            UVIndexTextBlock.Text = $"UV Index: 5";
-            HumidityTextBlock.Text = $"Humidity: 60%";
+            CurrentWeatherData data = ServiceManager.GetOneData(location, timestamp);
+            if(data == null)
+            {
+                return;
+            }
+
+            SearchResultTextBlock.Text = $"Weather for {location} on {selectedDate.ToShortDateString()} at {data.Timestamp.Hour}h";
+
+            LocationTextBlock.Text = $"Location: {data.Location}";
+            TemperatureTextBlock.Text = $"Temperature: {data.Temperature}°C";
+            PressureTextBlock.Text = $"Pressure: {data.Pressure}hPa";
+            WindSpeedTextBlock.Text = $"Wind Speed: {data.WindSpeed}km/h";
+            WindDirectionTextBlock.Text = $"Wind Direction: {data.WindDirection}";
+            PrecipitationTextBlock.Text = $"Precipitation: {data.Precipitation}mm";
+            UVIndexTextBlock.Text = $"UV Index: {data.UVIndex}";
+            HumidityTextBlock.Text = $"Humidity: {data.Humidity}%";
         }
 
         private void TimeTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)

@@ -77,7 +77,6 @@ namespace DesktopClient
                 }
 
                 channel.Add(newWeatherData);
-                MessageBox.Show("1 NEW DATA ADDED.", "OK", MessageBoxButton.OK, MessageBoxImage.Information);
                 return true;
 
 
@@ -126,7 +125,7 @@ namespace DesktopClient
         }
 
 
-        private List<CurrentWeatherData> GetDataInRange(DateTime from, DateTime to, string location)
+        public List<CurrentWeatherData> GetDataInRange(DateTime from, DateTime to, string location)
         {
             try
             {
@@ -158,7 +157,7 @@ namespace DesktopClient
         }
 
 
-        private static double? GetCurrentTemperature(string location, DateTime timestamp)
+        public static double? GetCurrentTemperature(string location, DateTime timestamp)
         {
             try
             {
@@ -190,7 +189,7 @@ namespace DesktopClient
         }
 
 
-        private static double? GetCurrentPressure(string location, DateTime timestamp)
+        public static double? GetCurrentPressure(string location, DateTime timestamp)
         {
             try
             {
@@ -221,7 +220,7 @@ namespace DesktopClient
         }
 
 
-        private static double? GetWindSpeed(string location, DateTime timestamp)
+        public static double? GetWindSpeed(string location, DateTime timestamp)
         {
             try
             {
@@ -252,7 +251,7 @@ namespace DesktopClient
         }
 
 
-        private static WindDirection? GetWindDirection(string location, DateTime timestamp)
+        public static WindDirection? GetWindDirection(string location, DateTime timestamp)
         {
             try
             {
@@ -283,7 +282,7 @@ namespace DesktopClient
         }
 
 
-        private static double? GetPrecipitation(string location, DateTime timestamp)
+        public static double? GetPrecipitation(string location, DateTime timestamp)
         {
             try
             {
@@ -314,7 +313,7 @@ namespace DesktopClient
         }
 
 
-        private static double? GetHumidity(string location, DateTime timestamp)
+        public static double? GetHumidity(string location, DateTime timestamp)
         {
             try
             {
@@ -345,7 +344,7 @@ namespace DesktopClient
         }
 
 
-        private static double? GetUVIndex(string location, DateTime timestamp)
+        public static double? GetUVIndex(string location, DateTime timestamp)
         {
             try
             {
@@ -376,7 +375,7 @@ namespace DesktopClient
         }
 
 
-        private static double? GetAverageTemperature(string location, DateTime day)
+        public static double? GetAverageTemperature(string location, DateTime day)
         {
             try
             {
@@ -407,7 +406,7 @@ namespace DesktopClient
         }
 
 
-        private static (double, double)? GetMinMaxTemperature(string location, DateTime day)
+        public static (double, double)? GetMinMaxTemperature(string location, DateTime day)
         {
             try
             {
@@ -438,7 +437,7 @@ namespace DesktopClient
         }
 
 
-        private static int? GetClearDaysNumber(string location, DateTime month)
+        public static int? GetClearDaysNumber(string location, DateTime month)
         {
             try
             {
@@ -469,7 +468,7 @@ namespace DesktopClient
         }
 
 
-        private static int? GetRainyDaysNumber(string location, DateTime month)
+        public static int? GetRainyDaysNumber(string location, DateTime month)
         {
             try
             {
@@ -500,7 +499,7 @@ namespace DesktopClient
         }
 
 
-        private static (double, double)? GetMinMaxPrecipitation(string location, DateTime day)
+        public static (double, double)? GetMinMaxPrecipitation(string location, DateTime day)
         {
             try
             {
@@ -531,7 +530,7 @@ namespace DesktopClient
         }
 
 
-        private static double? GetAverageHumidity(string location, DateTime day)
+        public static double? GetAverageHumidity(string location, DateTime day)
         {
             try
             {
@@ -562,7 +561,7 @@ namespace DesktopClient
         }
 
 
-        private static List<int> GetExtremeUVIndexHours(string location, DateTime day)
+        public static List<int> GetExtremeUVIndexHours(string location, DateTime day)
         {
             try
             {
@@ -591,14 +590,5 @@ namespace DesktopClient
             }
             return null;
         }
-
-
-
-
-
-
-
-
-
     }
 }

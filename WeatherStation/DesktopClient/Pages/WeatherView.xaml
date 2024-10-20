@@ -41,12 +41,11 @@
             <Button Name="SearchButton" Content="Search" Width="100" Height="40" Background="{StaticResource LightGold}" Foreground="White" Click="SearchButton_Click"/>
 
             <!-- Result display -->
-            <TextBlock Name="SearchResultTextBlock" Height="30" Foreground="{StaticResource DarkBrown}" FontSize="16" Margin="20,20,0,0" HorizontalAlignment="Center"/>
+            <TextBlock Name="SearchResultTextBlock" Height="30" Foreground="{StaticResource DarkBrown}" FontSize="16" Margin="20,30,0,0" HorizontalAlignment="Center"/>
 
             <!-- Weather Details -->
             <StackPanel Name="WeatherDetailsStackPanel" Margin="20,20,20,0" HorizontalAlignment="Center">
                 <TextBlock Name="LocationTextBlock" Foreground="{StaticResource DarkBrown}" FontSize="14" FontWeight="Bold"/>
-                <TextBlock Name="TimestampTextBlock" Foreground="{StaticResource DarkBrown}" FontSize="14"/>
                 <TextBlock Name="TemperatureTextBlock" Foreground="{StaticResource DarkBrown}" FontSize="14"/>
                 <TextBlock Name="PressureTextBlock" Foreground="{StaticResource DarkBrown}" FontSize="14"/>
                 <TextBlock Name="WindSpeedTextBlock" Foreground="{StaticResource DarkBrown}" FontSize="14"/>

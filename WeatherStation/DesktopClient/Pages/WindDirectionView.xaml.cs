@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SharedLibrary;
 
 namespace DesktopClient.Pages
 {
@@ -37,9 +38,14 @@ namespace DesktopClient.Pages
             DateTime selectedDate = SearchDatePicker.SelectedDate.Value;
             string time = SearchTimeTextBox.Text;
 
-            string dateTimeString = $"{selectedDate.ToShortDateString()} {time}";
-            string result = $"Wind direction for {location} on {dateTimeString} is North.";
+            string timestampStr = $"{selectedDate.ToShortDateString()} {time}";
+            DateTime timestamp = DateTime.Parse(timestampStr);
 
+            WindDirection? windDirection = ServiceManager.GetWindDirection(location, timestamp);
+            if (windDirection == null)
+                return;
+
+            string result = $"Wind direction for {location} on {selectedDate.ToShortDateString()} at {timestamp.Hour} is {windDirection}.";
             SearchResultTextBlock.Text = result;
         }
 

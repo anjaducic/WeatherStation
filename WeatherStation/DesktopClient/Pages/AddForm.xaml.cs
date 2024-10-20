@@ -3,6 +3,9 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Text.RegularExpressions;
 using System.Windows.Media;
+using SharedLibrary;
+using System;
+using System.Linq;
 
 namespace DesktopClient.Pages
 {
@@ -50,7 +53,6 @@ namespace DesktopClient.Pages
             }
         }
 
-        // LostFocus event for field validation
         private void Field_LostFocus(object sender, RoutedEventArgs e)
         {
             var control = sender as UIElement;
@@ -94,7 +96,6 @@ namespace DesktopClient.Pages
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            // Check if all required fields are filled
             if (string.IsNullOrWhiteSpace(LocationTextBox.Text) ||
                 string.IsNullOrWhiteSpace(TemperatureTextBox.Text) ||
                 string.IsNullOrWhiteSpace(PressureTextBox.Text) ||
@@ -110,8 +111,32 @@ namespace DesktopClient.Pages
                 return;
             }
 
-            
-            MessageBox.Show("Data saved successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            string location = LocationTextBox.Text;
+            double temperature = Double.Parse(TemperatureTextBox.Text);
+            double pressure = Double.Parse(PressureTextBox.Text);
+            double windSpeed = Double.Parse(WindSpeedTextBox.Text);
+            string selectedDirection = ((ComboBoxItem)WindDirectionComboBox.SelectedItem).Content.ToString();
+            Enum.TryParse(selectedDirection, out WindDirection windDirection);
+            double precipitation = Double.Parse(PrecipitationTextBox.Text);
+            double uvIndex = Double.Parse(UVIndexTextBox.Text);
+            double humidity = Double.Parse (HumidityTextBox.Text);
+
+
+            DateTime selectedDate = DatePicker.SelectedDate.Value;
+            string time = TimeTextBox.Text;
+            string timestampStr = $"{selectedDate.ToShortDateString()} {time}";
+            DateTime timestamp = DateTime.Parse(timestampStr);
+
+
+            CurrentWeatherData newWeatherData = new CurrentWeatherData(location, timestamp, temperature, pressure, windSpeed, windDirection, precipitation, uvIndex, humidity);
+            if(ServiceManager.AddNewData(newWeatherData))
+            {
+                MessageBox.Show("Data saved successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                DefaultPage defaultPage = new DefaultPage();
+                Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().Main.Content = defaultPage;
+            }
+            else
+                MessageBox.Show("Error while adding new data. Try again.", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

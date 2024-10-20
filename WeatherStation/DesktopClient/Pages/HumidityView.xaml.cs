@@ -37,9 +37,14 @@ namespace DesktopClient.Pages
             DateTime selectedDate = SearchDatePicker.SelectedDate.Value;
             string time = SearchTimeTextBox.Text;
 
-            string dateTimeString = $"{selectedDate.ToShortDateString()} {time}";
-            string result = $"Humidity for {location} on {dateTimeString} is 12%.";
+            string timestampStr = $"{selectedDate.ToShortDateString()} {time}";
+            DateTime timestamp = DateTime.Parse(timestampStr);
 
+            double? humidity = ServiceManager.GetHumidity(location, timestamp);
+            if (humidity == null)
+                return;
+
+            string result = $"Humidity for {location} on {selectedDate.ToShortDateString()} at {timestamp.Hour} is {humidity}%.";
             SearchResultTextBlock.Text = result;
         }
 

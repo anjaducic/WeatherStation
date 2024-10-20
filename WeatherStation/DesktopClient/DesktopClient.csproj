@@ -83,6 +83,9 @@
     <Compile Include="Pages\ClearDaysView.xaml.cs">
       <DependentUpon>ClearDaysView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\DefaultPage.xaml.cs">
+      <DependentUpon>DefaultPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ExtremeUVIndexView.xaml.cs">
       <DependentUpon>ExtremeUVIndexView.xaml</DependentUpon>
     </Compile>
@@ -151,6 +154,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ClearDaysView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\DefaultPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -243,6 +250,11 @@
       <Project>{b265a610-b009-43b3-82c1-814e4da77634}</Project>
       <Name>SharedLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="station.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

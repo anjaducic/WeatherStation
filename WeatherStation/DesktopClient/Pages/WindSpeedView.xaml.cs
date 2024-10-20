@@ -37,9 +37,14 @@ namespace DesktopClient.Pages
             DateTime selectedDate = SearchDatePicker.SelectedDate.Value;
             string time = SearchTimeTextBox.Text;
 
-            string dateTimeString = $"{selectedDate.ToShortDateString()} {time}";
-            string result = $"Wind speed for {location} on {dateTimeString} is 22 km/h.";
+            string timestampStr = $"{selectedDate.ToShortDateString()} {time}";
+            DateTime timestamp = DateTime.Parse(timestampStr);
 
+            double? windSpeed = ServiceManager.GetWindSpeed(location, timestamp);
+            if (windSpeed == null)
+                return;
+
+            string result = $"Wind speed for {location} on {selectedDate.ToShortDateString()} at {timestamp.Hour} is {windSpeed}km/h.";
             SearchResultTextBlock.Text = result;
         }
 

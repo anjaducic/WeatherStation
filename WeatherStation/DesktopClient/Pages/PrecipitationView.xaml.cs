@@ -40,9 +40,14 @@ namespace DesktopClient.Pages
             DateTime selectedDate = SearchDatePicker.SelectedDate.Value;
             string time = SearchTimeTextBox.Text;
 
-            string dateTimeString = $"{selectedDate.ToShortDateString()} {time}";
-            string result = $"Precipitation for {location} on {dateTimeString} is 12mm.";
+            string timestampStr = $"{selectedDate.ToShortDateString()} {time}";
+            DateTime timestamp = DateTime.Parse(timestampStr);
 
+            double? precipitation = ServiceManager.GetPrecipitation(location, timestamp);
+            if (precipitation == null)
+                return;
+
+            string result = $"Precipitation for {location} on {selectedDate.ToShortDateString()} at {timestamp.Hour} is {precipitation}°C.";
             SearchResultTextBlock.Text = result;
         }
 

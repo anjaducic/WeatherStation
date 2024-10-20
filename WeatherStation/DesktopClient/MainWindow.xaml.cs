@@ -24,6 +24,8 @@ using System.Windows.Documents;
         public MainWindow()
         {
             InitializeComponent();
+            DefaultPage defaultPage = new DefaultPage();
+            Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().Main.Content = defaultPage;
         }
 
         private void New_Click(object sender, RoutedEventArgs e)
