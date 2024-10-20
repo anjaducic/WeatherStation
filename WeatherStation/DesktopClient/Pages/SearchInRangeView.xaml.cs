@@ -73,33 +73,15 @@ namespace DesktopClient.Pages
                 return;
             }
 
-            List<CurrentWeatherData> weatherDataList = GetWeatherData(location, startDateTime, endDateTime);
+            List<CurrentWeatherData> weatherDataList = ServiceManager.GetDataInRange(startDateTime, endDateTime, location);
+            if (weatherDataList == null)
+                return;
+
 
             ResultsListView.ItemsSource = weatherDataList;
         }
 
-        private List<CurrentWeatherData> GetWeatherData(string location, DateTime startDateTime, DateTime endDateTime)
-        {
-            List<CurrentWeatherData> dataList = new List<CurrentWeatherData>
-            {
-                new CurrentWeatherData("Ruma", DateTime.Now.Date.AddHours(8), 15.4, 1012, 12.5, WindDirection.East, 0.0, 5.2, 85),
-                new CurrentWeatherData("Ruma", DateTime.Now.Date.AddHours(18), 17.8, 1010, 8.3, WindDirection.SouthEast, 2.3, 4.1, 78),
-
-                new CurrentWeatherData("Novi Sad", DateTime.Now.Date.AddDays(1).AddHours(9), 14.2, 1013, 10.7, WindDirection.NorthEast, 0.0, 6.1, 88),
-                new CurrentWeatherData("Novi Sad", DateTime.Now.Date.AddDays(1).AddHours(20), 16.9, 1010, 7.1, WindDirection.West, 1.5, 3.3, 76),
-
-                new CurrentWeatherData("Sremski Karlovci", DateTime.Now.Date.AddDays(2).AddHours(6), 13.3, 1015, 5.0, WindDirection.SouthWest, 0.0, 3.2, 90),
-                new CurrentWeatherData("Sremski Karlovci", DateTime.Now.Date.AddDays(2).AddHours(17), 19.1, 1011, 10.3, WindDirection.North, 0.0, 7.6, 79),
-
-                new CurrentWeatherData("Petrovaradin", DateTime.Now.Date.AddDays(3).AddHours(7), 16.5, 1014, 11.4, WindDirection.East, 0.1, 4.9, 81),
-                new CurrentWeatherData("Petrovaradin", DateTime.Now.Date.AddDays(3).AddHours(19), 18.2, 1010, 9.3, WindDirection.South, 0.3, 5.4, 77),
-
-                new CurrentWeatherData("Backa Topola", DateTime.Now.Date.AddDays(4).AddHours(8), 12.7, 1012, 7.6, WindDirection.NorthWest, 0.0, 2.1, 84),
-                new CurrentWeatherData("Backa Topola", DateTime.Now.Date.AddDays(4).AddHours(17), 20.4, 1009, 6.8, WindDirection.West, 0.0, 8.4, 70)
-            };
-
-            return dataList;
-        }
+        
     }
 
   

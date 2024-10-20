@@ -41,7 +41,7 @@
             <Button Name="SearchButton" Content="Search" Width="100" Height="40" Background="{StaticResource LightGold}" Foreground="White" Click="SearchButton_Click"/>
 
             <!-- Result display -->
-            <TextBlock Name="SearchResultTextBlock" Height="30" Foreground="{StaticResource DarkBrown}" FontSize="16" Margin="20,20,0,0" HorizontalAlignment="Center"/>
+            <TextBlock Name="SearchResultTextBlock" Height="30" Foreground="{StaticResource DarkBrown}" FontSize="16" Margin="20,30,0,0" HorizontalAlignment="Center"/>
         </StackPanel>
     </Grid>
 </Page>

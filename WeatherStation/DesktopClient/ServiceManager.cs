@@ -78,8 +78,6 @@ namespace DesktopClient
 
                 channel.Add(newWeatherData);
                 return true;
-
-
             }
             catch (FaultException<WeatherDataServiceException> ex)
             {
@@ -125,7 +123,7 @@ namespace DesktopClient
         }
 
 
-        public List<CurrentWeatherData> GetDataInRange(DateTime from, DateTime to, string location)
+        public static List<CurrentWeatherData> GetDataInRange(DateTime from, DateTime to, string location)
         {
             try
             {

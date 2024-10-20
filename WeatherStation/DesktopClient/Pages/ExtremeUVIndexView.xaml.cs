@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace DesktopClient.Pages
 {
-    /// <summary>
-    /// Interaction logic for ExtremeUVIndexView.xaml
-    /// </summary>
     public partial class ExtremeUVIndexView : Page
     {
         public ExtremeUVIndexView()
@@ -25,17 +22,6 @@ namespace DesktopClient.Pages
             InitializeComponent();
         }
 
-        private List<int> GetHours(string location, DateTime date)
-        {
-            Random rand = new Random();
-            List<int> hours = new List<int>();
-            for (int i = 0; i < 7; i++)
-            {
-                hours.Add(rand.Next(5, 31));  
-            }
-
-            return hours;
-        }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
@@ -47,9 +33,12 @@ namespace DesktopClient.Pages
             }
 
             string location = SearchLocationTextBox.Text;
-            DateTime selectedDate = SearchDatePicker.SelectedDate.Value;
+            DateTime selectedDate = DateTime.Parse(SearchDatePicker.SelectedDate.Value.ToShortDateString());
 
-            List<int> hours = GetHours(location, selectedDate);
+            List<int> hours = ServiceManager.GetExtremeUVIndexHours(location, selectedDate);
+            if (hours == null)
+                return;
+
 
             StringBuilder result = new StringBuilder();
             result.AppendLine($"Extreme UV for {location} on {selectedDate.ToShortDateString()} at :");

@@ -36,11 +36,15 @@ namespace DesktopClient.Pages
             }
 
             string location = SearchLocationTextBox.Text;
-            DateTime selectedDate = SearchDatePicker.SelectedDate.Value;
+            DateTime selectedDate = DateTime.Parse(SearchDatePicker.SelectedDate.Value.ToShortDateString());
 
-            string dateTimeString = $"{selectedDate.ToShortDateString()}";
-            string result = $"Min precipitation for {location} on {dateTimeString} is 12°C.\n" +
-                            $"Max precipitation for {location} on {dateTimeString} is 19°C.";
+            (double min, double max)? minMax = ServiceManager.GetMinMaxPrecipitation(location, selectedDate);
+
+            if (minMax == null)
+                return;
+
+            string result = $"Min precipitation for {location} on {selectedDate.ToShortDateString()} is {minMax.Value.min}mm.\n" +
+                            $"Max precipitation for {location} on {selectedDate.ToShortDateString()} is {minMax.Value.max}mm.";
 
             SearchResultTextBlock.Text = result;
         }

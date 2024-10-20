@@ -33,11 +33,14 @@ namespace DesktopClient.Pages
             }
 
             string location = SearchLocationTextBox.Text;
-            DateTime selectedDate = SearchDatePicker.SelectedDate.Value;
+            DateTime selectedDate = DateTime.Parse(SearchDatePicker.SelectedDate.Value.ToShortDateString());
 
-            string dateTimeString = $"{selectedDate.ToShortDateString()}";
-            string result = $"Average humidity for {location} on {dateTimeString} is 12%.";
+            double? averageHumidity = ServiceManager.GetAverageHumidity(location, selectedDate);
 
+            if (averageHumidity == null)
+                return;
+
+            string result = $"Average humidity for {location} on {selectedDate.ToShortDateString()} is {averageHumidity}%.";
             SearchResultTextBlock.Text = result;
         }
 

@@ -47,7 +47,7 @@ namespace DesktopClient.Pages
             if (precipitation == null)
                 return;
 
-            string result = $"Precipitation for {location} on {selectedDate.ToShortDateString()} at {timestamp.Hour} is {precipitation}°C.";
+            string result = $"Precipitation for {location} on {selectedDate.ToShortDateString()} at {timestamp.Hour} is {precipitation}mm.";
             SearchResultTextBlock.Text = result;
         }
 

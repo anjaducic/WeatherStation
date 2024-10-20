@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace DesktopClient.Pages
 {
-    /// <summary>
-    /// Interaction logic for PressureView.xaml
-    /// </summary>
     public partial class MinMaxTemperatureView : Page
     {
         public MinMaxTemperatureView()
@@ -36,11 +33,15 @@ namespace DesktopClient.Pages
             }
 
             string location = SearchLocationTextBox.Text;
-            DateTime selectedDate = SearchDatePicker.SelectedDate.Value;
+            DateTime selectedDate = DateTime.Parse(SearchDatePicker.SelectedDate.Value.ToShortDateString());
 
-            string dateTimeString = $"{selectedDate.ToShortDateString()}";
-            string result = $"Min temperature for {location} on {dateTimeString} is 12°C.\n" +
-                            $"Max temperature for {location} on {dateTimeString} is 19°C.";
+            (double min, double max)? minMax = ServiceManager.GetMinMaxTemperature(location, selectedDate);
+
+            if (minMax == null)
+                return;
+
+            string result = $"Min temperature for {location} on {selectedDate.ToShortDateString()} is {minMax.Value.min}°C.\n" +
+                            $"Max temperature for {location} on {selectedDate.ToShortDateString()} is {minMax.Value.max}°C.";
 
             SearchResultTextBlock.Text = result;
         }

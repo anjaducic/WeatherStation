@@ -36,11 +36,16 @@ namespace DesktopClient.Pages
             }
 
             string location = SearchLocationTextBox.Text;
-            DateTime selectedDate = SearchDatePicker.SelectedDate.Value;
+            DateTime selectedDate = DateTime.Parse(SearchDatePicker.SelectedDate.Value.ToShortDateString());
 
-            string dateTimeString = $"{selectedDate.ToShortDateString()}";
-            string result = $"Average temperature for {location} on {dateTimeString} is 12°C.";
+            double? averageTemperature = ServiceManager.GetAverageTemperature(location, selectedDate);
 
+            if (averageTemperature == null) 
+            {
+                return;
+            }
+
+            string result = $"Average temperature for {location} on {selectedDate.ToShortDateString()} is {averageTemperature}°C.";
             SearchResultTextBlock.Text = result;
         }
 
