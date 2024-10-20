@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace DesktopClient.Pages
 {
-    /// <summary>
-    /// Interaction logic for ClearDaysView.xaml
-    /// </summary>
     public partial class ClearDaysView : Page
     {
         public ClearDaysView()
@@ -85,9 +82,12 @@ namespace DesktopClient.Pages
 
             DateTime selectedDate = new DateTime(selectedYear, GetMonthNumber(selectedMonth), 1);
 
+            int? daysNumber = ServiceManager.GetClearDaysNumber(location, selectedDate);
+            if (daysNumber == null)
+                return;
 
             StringBuilder result = new StringBuilder();
-            result.AppendLine($"Number of clear days for {location} in {selectedMonth} {selectedYear} is 5.");
+            result.AppendLine($"Number of clear days for {location} in {selectedMonth} {selectedYear} is {daysNumber}.");
 
            
 

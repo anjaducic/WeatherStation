@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace DesktopClient.Pages
 {
-    /// <summary>
-    /// Interaction logic for ClearDaysView.xaml
-    /// </summary>
     public partial class RainyDaysView : Page
     {
         public RainyDaysView()
@@ -85,9 +82,12 @@ namespace DesktopClient.Pages
 
             DateTime selectedDate = new DateTime(selectedYear, GetMonthNumber(selectedMonth), 1);
 
+            int? daysNumber = ServiceManager.GetRainyDaysNumber(location, selectedDate);
+            if (daysNumber == null)
+                return;
 
             StringBuilder result = new StringBuilder();
-            result.AppendLine($"Number of rainy days for {location} in {selectedMonth} {selectedYear} is 5.");
+            result.AppendLine($"Number of rainy days for {location} in {selectedMonth} {selectedYear} is {daysNumber}.");
 
 
 
