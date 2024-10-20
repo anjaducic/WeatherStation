@@ -8,7 +8,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="../station.jpg" Stretch="UniformToFill" />
+            <ImageBrush ImageSource="../Photos/data.jpg" Opacity="0.7" Stretch="UniformToFill" />
         </Grid.Background>
     </Grid>
 </Page>

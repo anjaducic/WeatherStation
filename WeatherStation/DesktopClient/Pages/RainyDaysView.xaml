@@ -4,6 +4,10 @@
       xmlns:local="clr-namespace:DesktopClient"
       Title="Min and Max Temperature Search">
 
+    <Page.Background>
+        <ImageBrush ImageSource="../Photos/humidity.jpg" Opacity="0.08" Stretch="UniformToFill" />
+    </Page.Background>
+
     <Page.Resources>
         <SolidColorBrush x:Key="DarkBlue" Color="#E0C28C"/>
         <SolidColorBrush x:Key="LightGray" Color="#D0D3D8"/>

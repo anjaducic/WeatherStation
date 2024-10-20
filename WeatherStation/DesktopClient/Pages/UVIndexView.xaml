@@ -12,6 +12,10 @@
         <SolidColorBrush x:Key="DarkBrown" Color="#6A4F35"/>
     </Page.Resources>
 
+    <Page.Background>
+        <ImageBrush ImageSource="../Photos/uv.jpeg" Opacity="0.08" Stretch="UniformToFill" />
+    </Page.Background>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
