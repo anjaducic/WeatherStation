@@ -116,7 +116,7 @@ namespace DesktopClient.Pages
             double pressure = Double.Parse(PressureTextBox.Text);
             double windSpeed = Double.Parse(WindSpeedTextBox.Text);
             string selectedDirection = ((ComboBoxItem)WindDirectionComboBox.SelectedItem).Content.ToString();
-            Enum.TryParse(selectedDirection, out WindDirection windDirection);
+            Enum.TryParse(selectedDirection.Replace("-", ""), out WindDirection windDirection);
             double precipitation = Double.Parse(PrecipitationTextBox.Text);
             double uvIndex = Double.Parse(UVIndexTextBox.Text);
             double humidity = Double.Parse (HumidityTextBox.Text);
